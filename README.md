@@ -1,5 +1,7 @@
 # GameDisc
 
+<img alt="GameDisc Logo" src="./git/banner.png" style="height: 128px">
+
 Para executar a aplicação, faça:
 
 1. Instale as dependências com: `pod install`
