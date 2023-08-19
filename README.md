@@ -12,10 +12,13 @@
 https://github.com/vinicsans/GameDisc.git
 
 ## 👩🏾‍💻 Technologies
-- ✅ UIKit
-- ✅ ViewCode
-- ✅ Storyboard
-- ✅ UITableView
+✅ - UIKit
+
+✅ - ViewCode
+
+✅ - Storyboard
+
+✅ - UITableView
 
 ## 💻 Requirements to install code
 
