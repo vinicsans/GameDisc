@@ -4,8 +4,6 @@
 
 <hr>
 
-<br>
-
 <img src="https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white">
 
 > Discover an incredible catalog of games, and find the one that suits you.
