@@ -59,9 +59,17 @@ see the GitHub documentation on [how to create a pull request](https://help.gith
   <tr>
     <td align="center">
       <a href="https://github.com/vinicsans">
-        <img src="./assets/profileVinic.png" width="100px;" styles="border-radius: 8px"/><br>
+        <img src="./assets/profileVinic.png" width="100px;" style="border-radius: 8px"/><br>
         <sub>
           <b>Vinicius Alves</b>
+        </sub>
+      </a>
+    </td>
+        <td align="center">
+      <a href="https://github.com/nicolasarvani">
+        <img src="./assets/profileNicolas.jpeg" width="100px;" style="border-radius: 8px"/><br>
+        <sub>
+          <b>Nicolas Arvani</b>
         </sub>
       </a>
     </td>
