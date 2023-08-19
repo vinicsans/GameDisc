@@ -16,7 +16,7 @@ https://github.com/vinicsans/GameDisc.git
 [ ✅ ] ViewCode <br>
 [ ✅ ] Storyboard <br>
 [ ✅ ] UITableView <br>
-[ ✅ ] UICollectionVIew <br>
+[ ✅ ] UICollectionView <br>
 
 ## 💻 Requirements to install code
 
@@ -28,11 +28,11 @@ Before starting, check the following requirements:
 
 ## 🚀 Installing app code on macbook
 
-if you **have** ssh configured, run the command
+if you **have** ssh configured, run the command:
 ```
 git clone git@github.com:vinicsans/GameDisc.git
 ```
-if you **don't have** ssh configured, run the command
+if you **don't have** ssh configured, run the command:
 ```
 git clone https://github.com/vinicsans/GameDisc.git
 ```
