@@ -24,7 +24,7 @@ Before starting, check the following requirements:
 * MacOS
 * Xcode installed
 * Git installed
-* CocoaPods
+* CocoaPods installed
 
 ## 🚀 Installing app code on macbook
 
