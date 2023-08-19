@@ -1,0 +1,649 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0BDE1B746E852F1BB1B32C94BC65D6A2 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245B07E864E8F5194D212442912B1FBC /* Filter.swift */; };
+		20E4F1339ADD55374DD8663A14DFDD1D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BB55FCDA8878565A8348A1A4254584 /* Constants.swift */; };
+		21E472D8EA2C71A19C227589C1077079 /* VibrantColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DB1FCEE7118AA27D35A8D131F570F0 /* VibrantColors.swift */; };
+		2201A2924DFE29F981387672024917F7 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FB8E494DD31674A489F240578D970D /* Util.swift */; };
+		255D737AC801501B890ACC0FCE17D119 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		3A2DD7A456CE2116225AD76056091444 /* ColorConverters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCA652AD0869EA2DF327EA885E5C4A5 /* ColorConverters.swift */; };
+		3ABC87D0D1B7142D09FA1509D342FC99 /* swift-vibrant-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DABB770B3BAE75E15F438B0F6600860E /* swift-vibrant-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		47CA8A1B48177418432429A015C6F93C /* Vbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E67862FEBEBD4A905F147FAD6835884 /* Vbox.swift */; };
+		60EDC9F0F6ED0258C2C6722A846F11A6 /* Pods-GameDisc-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 136B9DCC4AA3E88BE2DBD1F96B72C178 /* Pods-GameDisc-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ACCAB1C09D6C8BE81318D183BCA7611 /* MMCQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD592FB40093D8ADE5D2FEE71003CF7E /* MMCQ.swift */; };
+		6D502A2AE283903D857BF0423CB5BC31 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1584E612FAD89882E25B98B5BFF1E9 /* Generator.swift */; };
+		86229A21C3A561AA36E2A14007374FA1 /* Pods-GameDisc-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B504579292CF7E71A69B199A173DE /* Pods-GameDisc-dummy.m */; };
+		978D644DAC2390C05E8998A214E2E1DF /* Vibrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA9621E8BBB87A2AA35DA1051A643C8 /* Vibrant.swift */; };
+		9CE636CD8BF67A780038925BD2873DF3 /* Quantizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597DD7479CECEFA02F55466BEF6CD10E /* Quantizer.swift */; };
+		A62A03D177453E9F647B609EB13A3C50 /* swift-vibrant-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 683E694DCC10A58397C39D3BD3BCF707 /* swift-vibrant-dummy.m */; };
+		B6605F5D7BDA5E46C7D43FDFCDCC821D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52093D21795626E24B0D2F1D21C38C03 /* Image.swift */; };
+		EFCAFB4CA383930CE7A2DA84BBF99380 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174DE2A238A4D39382CD33313BBEB488 /* Builder.swift */; };
+		FD94C6AAD3CC783FAB73A574302C00A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2B231F9AEBBA426D3321DC02E80C2D4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F05F9C1E58EE2C13BCB401984D90F81;
+			remoteInfo = "swift-vibrant";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1061083C27DBE4F9BCF0B0E45674F020 /* swift-vibrant.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "swift-vibrant.modulemap"; sourceTree = "<group>"; };
+		136B9DCC4AA3E88BE2DBD1F96B72C178 /* Pods-GameDisc-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GameDisc-umbrella.h"; sourceTree = "<group>"; };
+		16D3416902A6347031A7B8889857155F /* Pods-GameDisc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GameDisc.debug.xcconfig"; sourceTree = "<group>"; };
+		174DE2A238A4D39382CD33313BBEB488 /* Builder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Builder.swift; path = swiftVibrant/Builder.swift; sourceTree = "<group>"; };
+		245B07E864E8F5194D212442912B1FBC /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = swiftVibrant/Filter.swift; sourceTree = "<group>"; };
+		24D72D60AB8E1BB395151F6BD8396285 /* Pods-GameDisc */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-GameDisc"; path = Pods_GameDisc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25F5D695FF280DD651E93509D2CE9653 /* Pods-GameDisc-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GameDisc-acknowledgements.plist"; sourceTree = "<group>"; };
+		34BE0081C50E4EAFA9F4CA961742747D /* swift_vibrant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swift_vibrant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D2B504579292CF7E71A69B199A173DE /* Pods-GameDisc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GameDisc-dummy.m"; sourceTree = "<group>"; };
+		4E67862FEBEBD4A905F147FAD6835884 /* Vbox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Vbox.swift; path = swiftVibrant/Vbox.swift; sourceTree = "<group>"; };
+		52093D21795626E24B0D2F1D21C38C03 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = swiftVibrant/Image.swift; sourceTree = "<group>"; };
+		55E9657DB6F67BBD7F44E1F0ECBC65C1 /* swift-vibrant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "swift-vibrant.release.xcconfig"; sourceTree = "<group>"; };
+		597DD7479CECEFA02F55466BEF6CD10E /* Quantizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Quantizer.swift; path = swiftVibrant/Quantizer.swift; sourceTree = "<group>"; };
+		5D7CA1D11FD87961CC7BDC054B88585B /* swift-vibrant-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "swift-vibrant-prefix.pch"; sourceTree = "<group>"; };
+		683E694DCC10A58397C39D3BD3BCF707 /* swift-vibrant-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "swift-vibrant-dummy.m"; sourceTree = "<group>"; };
+		6FE33906FE3C6DF7906AE794E685AA47 /* Pods-GameDisc-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GameDisc-acknowledgements.markdown"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		82CF235CABCFF7C72AACD6B3A68690EA /* swift-vibrant-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "swift-vibrant-Info.plist"; sourceTree = "<group>"; };
+		8320019927BD0AD299B0B70F438648A6 /* Pods-GameDisc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GameDisc.release.xcconfig"; sourceTree = "<group>"; };
+		8CCA652AD0869EA2DF327EA885E5C4A5 /* ColorConverters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorConverters.swift; path = swiftVibrant/ColorConverters.swift; sourceTree = "<group>"; };
+		90F420427A606E052238FE81C52C6B83 /* Pods-GameDisc.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GameDisc.modulemap"; sourceTree = "<group>"; };
+		92D77016DFD0EC8FCC79312F612F2FAF /* Pods-GameDisc-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GameDisc-Info.plist"; sourceTree = "<group>"; };
+		9D1584E612FAD89882E25B98B5BFF1E9 /* Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Generator.swift; path = swiftVibrant/Generator.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A2DB1FCEE7118AA27D35A8D131F570F0 /* VibrantColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VibrantColors.swift; path = swiftVibrant/VibrantColors.swift; sourceTree = "<group>"; };
+		ABA9621E8BBB87A2AA35DA1051A643C8 /* Vibrant.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Vibrant.swift; path = swiftVibrant/Vibrant.swift; sourceTree = "<group>"; };
+		D1FB8E494DD31674A489F240578D970D /* Util.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Util.swift; path = swiftVibrant/Util.swift; sourceTree = "<group>"; };
+		D6BB55FCDA8878565A8348A1A4254584 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = swiftVibrant/Constants.swift; sourceTree = "<group>"; };
+		DABB770B3BAE75E15F438B0F6600860E /* swift-vibrant-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "swift-vibrant-umbrella.h"; sourceTree = "<group>"; };
+		DFDC911F21DF239D84F6A8B6E1E18D29 /* Pods-GameDisc-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GameDisc-frameworks.sh"; sourceTree = "<group>"; };
+		ECCEBA7E201EB985A97DEC8926D6A0A1 /* swift-vibrant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "swift-vibrant.debug.xcconfig"; sourceTree = "<group>"; };
+		FD592FB40093D8ADE5D2FEE71003CF7E /* MMCQ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MMCQ.swift; path = swiftVibrant/MMCQ.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		41E6DF80C1D4C6C6BFB22549887CF6ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD94C6AAD3CC783FAB73A574302C00A6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F557FB2003F60E3C39F02164D866C13B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				255D737AC801501B890ACC0FCE17D119 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C78F2E2EC5DE1BED077AE5A6F81662A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1061083C27DBE4F9BCF0B0E45674F020 /* swift-vibrant.modulemap */,
+				683E694DCC10A58397C39D3BD3BCF707 /* swift-vibrant-dummy.m */,
+				82CF235CABCFF7C72AACD6B3A68690EA /* swift-vibrant-Info.plist */,
+				5D7CA1D11FD87961CC7BDC054B88585B /* swift-vibrant-prefix.pch */,
+				DABB770B3BAE75E15F438B0F6600860E /* swift-vibrant-umbrella.h */,
+				ECCEBA7E201EB985A97DEC8926D6A0A1 /* swift-vibrant.debug.xcconfig */,
+				55E9657DB6F67BBD7F44E1F0ECBC65C1 /* swift-vibrant.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/swift-vibrant";
+			sourceTree = "<group>";
+		};
+		255564ECDB39D6F536FF66FDF2C44060 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24D72D60AB8E1BB395151F6BD8396285 /* Pods-GameDisc */,
+				34BE0081C50E4EAFA9F4CA961742747D /* swift_vibrant.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A7A1C1F418C5545841092B31C39FD20 /* Pods-GameDisc */ = {
+			isa = PBXGroup;
+			children = (
+				90F420427A606E052238FE81C52C6B83 /* Pods-GameDisc.modulemap */,
+				6FE33906FE3C6DF7906AE794E685AA47 /* Pods-GameDisc-acknowledgements.markdown */,
+				25F5D695FF280DD651E93509D2CE9653 /* Pods-GameDisc-acknowledgements.plist */,
+				3D2B504579292CF7E71A69B199A173DE /* Pods-GameDisc-dummy.m */,
+				DFDC911F21DF239D84F6A8B6E1E18D29 /* Pods-GameDisc-frameworks.sh */,
+				92D77016DFD0EC8FCC79312F612F2FAF /* Pods-GameDisc-Info.plist */,
+				136B9DCC4AA3E88BE2DBD1F96B72C178 /* Pods-GameDisc-umbrella.h */,
+				16D3416902A6347031A7B8889857155F /* Pods-GameDisc.debug.xcconfig */,
+				8320019927BD0AD299B0B70F438648A6 /* Pods-GameDisc.release.xcconfig */,
+			);
+			name = "Pods-GameDisc";
+			path = "Target Support Files/Pods-GameDisc";
+			sourceTree = "<group>";
+		};
+		4EEB68F41FD3CB5AD2DDF9842D3AB81F /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A7A1C1F418C5545841092B31C39FD20 /* Pods-GameDisc */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5D632E9B5B3E3CFAE8BB50D8581FCB78 /* swift-vibrant */ = {
+			isa = PBXGroup;
+			children = (
+				174DE2A238A4D39382CD33313BBEB488 /* Builder.swift */,
+				8CCA652AD0869EA2DF327EA885E5C4A5 /* ColorConverters.swift */,
+				D6BB55FCDA8878565A8348A1A4254584 /* Constants.swift */,
+				245B07E864E8F5194D212442912B1FBC /* Filter.swift */,
+				9D1584E612FAD89882E25B98B5BFF1E9 /* Generator.swift */,
+				52093D21795626E24B0D2F1D21C38C03 /* Image.swift */,
+				FD592FB40093D8ADE5D2FEE71003CF7E /* MMCQ.swift */,
+				597DD7479CECEFA02F55466BEF6CD10E /* Quantizer.swift */,
+				D1FB8E494DD31674A489F240578D970D /* Util.swift */,
+				4E67862FEBEBD4A905F147FAD6835884 /* Vbox.swift */,
+				ABA9621E8BBB87A2AA35DA1051A643C8 /* Vibrant.swift */,
+				A2DB1FCEE7118AA27D35A8D131F570F0 /* VibrantColors.swift */,
+				1C78F2E2EC5DE1BED077AE5A6F81662A /* Support Files */,
+			);
+			path = "swift-vibrant";
+			sourceTree = "<group>";
+		};
+		8B0E3AA59A1ECBCAEFF1041780214692 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5D632E9B5B3E3CFAE8BB50D8581FCB78 /* swift-vibrant */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				8B0E3AA59A1ECBCAEFF1041780214692 /* Pods */,
+				255564ECDB39D6F536FF66FDF2C44060 /* Products */,
+				4EEB68F41FD3CB5AD2DDF9842D3AB81F /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4D0BB4C44CF7D8864A33F43394ABD35F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60EDC9F0F6ED0258C2C6722A846F11A6 /* Pods-GameDisc-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F0CA13EFEFCB96FBD2AE07B7DF1781 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ABC87D0D1B7142D09FA1509D342FC99 /* swift-vibrant-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1F05F9C1E58EE2C13BCB401984D90F81 /* swift-vibrant */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 070C3424850E537861898AE531A5C434 /* Build configuration list for PBXNativeTarget "swift-vibrant" */;
+			buildPhases = (
+				54F0CA13EFEFCB96FBD2AE07B7DF1781 /* Headers */,
+				6A3494FF172FC99AEF62039473E1115E /* Sources */,
+				F557FB2003F60E3C39F02164D866C13B /* Frameworks */,
+				5BF5CA55B6B479E0E0AF8213CAC5D67B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "swift-vibrant";
+			productName = swift_vibrant;
+			productReference = 34BE0081C50E4EAFA9F4CA961742747D /* swift_vibrant.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3B15B88AFC4E47B3F8EA4D1E2235DA28 /* Pods-GameDisc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B016CF4A7DE54DBF4963898938CC880 /* Build configuration list for PBXNativeTarget "Pods-GameDisc" */;
+			buildPhases = (
+				4D0BB4C44CF7D8864A33F43394ABD35F /* Headers */,
+				8298E6E9CC48BDD06BD41E8EBD50FB46 /* Sources */,
+				41E6DF80C1D4C6C6BFB22549887CF6ED /* Frameworks */,
+				5FA2F5026764F4B4756336326ADF8141 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7E7AC64A6CF039AF0E5C9C9E80E6901A /* PBXTargetDependency */,
+			);
+			name = "Pods-GameDisc";
+			productName = Pods_GameDisc;
+			productReference = 24D72D60AB8E1BB395151F6BD8396285 /* Pods-GameDisc */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 255564ECDB39D6F536FF66FDF2C44060 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B15B88AFC4E47B3F8EA4D1E2235DA28 /* Pods-GameDisc */,
+				1F05F9C1E58EE2C13BCB401984D90F81 /* swift-vibrant */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5BF5CA55B6B479E0E0AF8213CAC5D67B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FA2F5026764F4B4756336326ADF8141 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6A3494FF172FC99AEF62039473E1115E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFCAFB4CA383930CE7A2DA84BBF99380 /* Builder.swift in Sources */,
+				3A2DD7A456CE2116225AD76056091444 /* ColorConverters.swift in Sources */,
+				20E4F1339ADD55374DD8663A14DFDD1D /* Constants.swift in Sources */,
+				0BDE1B746E852F1BB1B32C94BC65D6A2 /* Filter.swift in Sources */,
+				6D502A2AE283903D857BF0423CB5BC31 /* Generator.swift in Sources */,
+				B6605F5D7BDA5E46C7D43FDFCDCC821D /* Image.swift in Sources */,
+				6ACCAB1C09D6C8BE81318D183BCA7611 /* MMCQ.swift in Sources */,
+				9CE636CD8BF67A780038925BD2873DF3 /* Quantizer.swift in Sources */,
+				A62A03D177453E9F647B609EB13A3C50 /* swift-vibrant-dummy.m in Sources */,
+				2201A2924DFE29F981387672024917F7 /* Util.swift in Sources */,
+				47CA8A1B48177418432429A015C6F93C /* Vbox.swift in Sources */,
+				978D644DAC2390C05E8998A214E2E1DF /* Vibrant.swift in Sources */,
+				21E472D8EA2C71A19C227589C1077079 /* VibrantColors.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8298E6E9CC48BDD06BD41E8EBD50FB46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86229A21C3A561AA36E2A14007374FA1 /* Pods-GameDisc-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7E7AC64A6CF039AF0E5C9C9E80E6901A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "swift-vibrant";
+			target = 1F05F9C1E58EE2C13BCB401984D90F81 /* swift-vibrant */;
+			targetProxy = 2B231F9AEBBA426D3321DC02E80C2D4C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		02CEFF5819D5C8FEE4B7EA892C541313 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16D3416902A6347031A7B8889857155F /* Pods-GameDisc.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GameDisc/Pods-GameDisc-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GameDisc/Pods-GameDisc.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		15ECA6F1394EA1C25604B3769241F692 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8320019927BD0AD299B0B70F438648A6 /* Pods-GameDisc.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GameDisc/Pods-GameDisc-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GameDisc/Pods-GameDisc.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		19F9650B552BD2DA2358380FE7363E2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55E9657DB6F67BBD7F44E1F0ECBC65C1 /* swift-vibrant.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/swift-vibrant/swift-vibrant-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/swift-vibrant/swift-vibrant-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/swift-vibrant/swift-vibrant.modulemap";
+				PRODUCT_MODULE_NAME = swift_vibrant;
+				PRODUCT_NAME = swift_vibrant;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		392E8F4EDEBE94D48A4AED3A6BD5EC16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECCEBA7E201EB985A97DEC8926D6A0A1 /* swift-vibrant.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/swift-vibrant/swift-vibrant-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/swift-vibrant/swift-vibrant-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/swift-vibrant/swift-vibrant.modulemap";
+				PRODUCT_MODULE_NAME = swift_vibrant;
+				PRODUCT_NAME = swift_vibrant;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7C3FBC45C4966EFE20583918767EFBE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		FF0A36149038A192FFD678E1D4A40D3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		070C3424850E537861898AE531A5C434 /* Build configuration list for PBXNativeTarget "swift-vibrant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				392E8F4EDEBE94D48A4AED3A6BD5EC16 /* Debug */,
+				19F9650B552BD2DA2358380FE7363E2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B016CF4A7DE54DBF4963898938CC880 /* Build configuration list for PBXNativeTarget "Pods-GameDisc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02CEFF5819D5C8FEE4B7EA892C541313 /* Debug */,
+				15ECA6F1394EA1C25604B3769241F692 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C3FBC45C4966EFE20583918767EFBE2 /* Debug */,
+				FF0A36149038A192FFD678E1D4A40D3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
