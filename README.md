@@ -8,8 +8,6 @@
 
 <img src="https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white">
 
-<br>
-
 > Discover an incredible catalog of games, and find the one that suits you.
 
 ## 🎥 DEMO
@@ -62,7 +60,7 @@ see the GitHub documentation on [how to create a pull request](https://help.gith
   <tr>
     <td align="center">
       <a href="https://github.com/vinicsans">
-        <img src="./assets/profileVinic.png" width="100px;" style="border-radius: 8px"/><br>
+        <img src="./assets/profileVinic.png" width="100px;" styles="border-radius: 8px"/><br>
         <sub>
           <b>Vinicius Alves</b>
         </sub>
