@@ -1,6 +1,6 @@
 # GameDisc
 
-<img width="200" src="./assets/gamedisc-logo.png" align="center">
+<img width="200" src="./assets/gamedisc-logo.png">
 
 <hr>
 
