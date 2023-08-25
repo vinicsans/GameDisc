@@ -5,12 +5,16 @@ struct CollectionTableViewCellViewModel {
     let games: [Game]
 }
 
+protocol CollectionTableViewCellDelegate: AnyObject {
+    func didTapCell()
+}
+
 class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     static let identifier = "CollectionTableViewCell"
     
     private var viewModels: [Game] = []
     
-    weak var parent: UIViewController?
+    weak var delegate: CollectionTableViewCellDelegate?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -47,7 +51,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-    
+        
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -106,9 +110,6 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Detail", bundle: Bundle(for: DetailViewController.self))
-        let detailViewController = storyboard.instantiateViewController(withIdentifier: "Detail")
-        
-        parent?.navigationController?.pushViewController(detailViewController, animated: true)
+        delegate?.didTapCell()
     }
 }

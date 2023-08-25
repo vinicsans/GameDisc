@@ -64,7 +64,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         featureGameView.configure(with: featuredGame)
         tableView.dataSource = self
         tableView.delegate = self
-        featureGameView.parent = self
+        featureGameView.delegate = self
     }
     
     private func addViewsToHierarchy() {
@@ -124,17 +124,18 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModels.count
     }
+    
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel = viewModels[indexPath.row]
-        
+                
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
             fatalError()
         }
         
 
         cell.configure(with: viewModel)
-        cell.parent = self
+        cell.delegate = self
         
         print(viewModel)
         
@@ -143,5 +144,22 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return view.frame.size.width/2
+    }
+}
+
+extension GameViewController: FeatureGameViewDelegate {
+    func didTapCard() {
+        let soryboard = UIStoryboard(name: "Detail", bundle: Bundle(for: DetailViewController.self))
+        let viewController = soryboard.instantiateViewController(withIdentifier: "Detail")
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension GameViewController: CollectionTableViewCellDelegate {
+    func didTapCell() {
+        let storyboard = UIStoryboard(name: "Detail", bundle: Bundle(for: DetailViewController.self))
+        let detailViewController = storyboard.instantiateViewController(withIdentifier: "Detail")
+        
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

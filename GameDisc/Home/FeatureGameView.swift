@@ -1,9 +1,13 @@
 import UIKit
 import swift_vibrant
 
+protocol FeatureGameViewDelegate: AnyObject {
+    func didTapCard()
+}
+
 class FeatureGameView: UIView {
     
-    weak var parent: UIViewController?
+    weak var delegate: FeatureGameViewDelegate?
 
     // MARK: - Components
     
@@ -115,9 +119,6 @@ class FeatureGameView: UIView {
     }
     
     @objc private func openNewPage() {
-        let storyboard = UIStoryboard(name: "Detail", bundle: Bundle(for: DetailViewController.self))
-        let detailViewController = storyboard.instantiateViewController(withIdentifier: "Detail")
-        
-        parent?.navigationController?.pushViewController(detailViewController, animated: true)
+        delegate?.didTapCard()
     }
 }
