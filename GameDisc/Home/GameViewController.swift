@@ -149,7 +149,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 extension GameViewController: FeatureGameViewDelegate {
     func didTapCard() {
-        let soryboard = UIStoryboard(name: "Detail", bundle: Bundle(for: DetailViewController.self))
+        let storyboard = UIStoryboard(name: "Detail", bundle: Bundle(for: DetailViewController.self))
         let viewController = soryboard.instantiateViewController(withIdentifier: "Detail")
         navigationController?.pushViewController(viewController, animated: true)
     }
