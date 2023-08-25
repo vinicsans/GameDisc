@@ -13,7 +13,7 @@ class NetworkManager {
  
     private let fieldsInRequest = "fields name, genres, screenshots, rating_count"
     private let platformsInRequest = "platforms = (6, 49, 48)" // PC, XBOX, PS
-    
+ 
     // MARK: Métodos Privados
     
     // Configuração da sessão
@@ -33,10 +33,10 @@ class NetworkManager {
     ///   - responseType: O tipo para decodificar a resposta da API
     ///   - completion: Um handler a ser chamado com o resultado
  
-    private func fetchData<T: Decodable>(fromEndpoint endpoint: String, withBody bodyData: Data?, responseType: T.Type, completion: @escaping (Result<[Game], Error>) -> Void) {
-        let url = URL(string: "https://api.igdb.com/v4/\(endpoint)")
+    private func fetchData<T: Decodable>(fromEndpoint endpoint: String, withBody bodyData: Data?, responseType: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+        let url = baseURL.appendingPathComponent(endpoint)
  
-        var request = URLRequest(url: url!)
+        var request = URLRequest(url: url)
         request.setCommonHeaders(clientID: clientID, accessToken: accessToken)
  
         if let bodyData = bodyData {
@@ -54,7 +54,7 @@ class NetworkManager {
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let decodedData = try decoder.decode([Game].self, from: data)
+                    let decodedData = try decoder.decode(T.self, from: data)
                     completion(.success(decodedData))
                 } catch {
                     completion(.failure(error))
@@ -77,7 +77,7 @@ class NetworkManager {
     public func fetchGamesByGenre(amount: Int, genreId: Int, completion: @escaping (Result<[Game], Error>) -> Void) {
         let requestBody = """
             \(fieldsInRequest);
-            where genres = (\(genreId)) & \(platformsInRequest);
+            where genres = (\(genreId)) & \(platformsInRequest) & screenshots != null;
             limit \(amount);
         """
         fetchData(fromEndpoint: "games", withBody: requestBody.data(using: .utf8), responseType: [Game].self, completion: completion)
@@ -91,10 +91,20 @@ class NetworkManager {
  
     public func fetchGamesLoved(amount: Int, completion: @escaping (Result<[Game], Error>) -> Void) {
         let requestBody = """
+            \(fieldsInRequest);
             sort rating_count desc;
             where \(platformsInRequest) & rating > 0;
+            limit \(amount);
         """
-        fetchData(fromEndpoint: "games/?limit=10&&fields=id,genres,name,rating,screenshots.image_id,genres.name%3B", withBody: requestBody.data(using: .utf8), responseType: [Game].self, completion: completion)
+        fetchData(fromEndpoint: "games", withBody: requestBody.data(using: .utf8), responseType: [Game].self, completion: completion)
+    }
+    
+    public func fetchScreenshot(imageId: Int, completion: @escaping (Result<[Screenshot], Error>) -> Void) {
+        let requestBody = """
+            fields image_id;
+            where id = \(imageId);
+        """
+        fetchData(fromEndpoint: "screenshots", withBody: requestBody.data(using: .utf8), responseType: [Screenshot].self, completion: completion)
     }
  
     // Busca o nome de um gênero pelo seu ID
@@ -102,7 +112,11 @@ class NetworkManager {
     // - Parametros:
     //   - genreId: o ID do genero
     //   - completion: um handler a ser chamado com os dados recebidos
-
+ 
+    public func fetchGenresName(genreId: Int, completion: @escaping (Result<[Genre], Error>) -> Void) {
+        let requestBody = "fields name; where id = (\(genreId));"
+        fetchData(fromEndpoint: "genres", withBody: requestBody.data(using: .utf8), responseType: [Genre].self, completion: completion)
+    }
 }
  
 // Definir os cabeçalhos da requisição

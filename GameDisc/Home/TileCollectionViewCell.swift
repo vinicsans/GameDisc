@@ -73,11 +73,18 @@ class TileCollectionViewCell: UICollectionViewCell {
     // MARK: - Configure
   
     func configure(with viewModel: Game) {
-        if let screenshot = viewModel.screenshots?.first {
-            gameImage.download(from: screenshot.imageId)
-            
-        }
-        
+        if let imageId = viewModel.screenshots.first {
+                NetworkManager.shared.fetchScreenshot(imageId: imageId) { result in
+                    switch result {
+                    case .success(let screenshots):
+                        if let imagePath = screenshots.first?.imageId {
+                            self.gameImage.download(from: imagePath)
+                        }
+                    case .failure(let error):
+                        print("Error fetching screenshot: \(error)")
+                    }
+                }
+            }
         if let image = gameImage.image {
             let colorPalette = Vibrant.from(image).getPalette()
             colorView.backgroundColor = colorPalette.Muted?.uiColor.withAlphaComponent(0.5)
@@ -89,4 +96,5 @@ class TileCollectionViewCell: UICollectionViewCell {
         contentView.contentMode = .scaleAspectFill
         contentView.layer.cornerRadius = 14
     }
+
 }

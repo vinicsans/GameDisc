@@ -7,7 +7,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private let featureGameView = FeatureGameView()
     private let networkManager = NetworkManager.shared
     
-    private let featuredGame: Game = Game(id: 0, name: "a", rating: 2, screenshots: [], genres: [])
+    private let genresList = [12, 8, 14, 15, 9]
+    
+    private let featuredGame: Game = Game(id: 1009, name: "The Last of Us", ratingCount: 91, screenshots: [236], genres: [0])
     
     private var viewModels: [CollectionTableViewCellViewModel] = []
     
@@ -49,6 +51,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         addViewsToHierarchy()
         setupConstraints()
         loadLovedGames()
+        // generateLists()
     }
     
     private func configureViews() {
@@ -84,16 +87,14 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func loadLovedGames() {
-      print("loadLovedGames() called")
-      networkManager.fetchGamesLoved(amount: 10) { result in
+      networkManager.fetchGamesLoved(amount: 12) { result in
         switch result {
         
         case .success(let games):
-          let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: "API Request", games: games)
+          let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: "Os favoritos da comunidade <3", games: games)
           self.viewModels.append(collectionViewModel)
         
             DispatchQueue.main.async { [self] in
-
                 tableView.reloadData()
           }
         
@@ -109,7 +110,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModels.count
     }
-    
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel = viewModels[indexPath.row]
@@ -147,4 +147,29 @@ extension GameViewController: CollectionTableViewCellDelegate {
         
         navigationController?.pushViewController(detailViewController, animated: true)
     }
+}
+
+// Generate Lists
+extension GameViewController {
+    func generateLists() {
+        for genreId in genresList {
+            networkManager.fetchGamesByGenre(amount: 2, genreId: genreId) { result in
+                switch result {
+                
+                case .success(let games):
+                  let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: "Os favoritos da comunidade <3", games: games)
+                  self.viewModels.append(collectionViewModel)
+                
+                    DispatchQueue.main.async { [self] in
+                        tableView.reloadData()
+                  }
+                
+                case .failure(let error):
+                    print(error)
+                  fatalError()
+                }
+              }
+            }
+        }
+
 }
