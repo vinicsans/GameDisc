@@ -80,6 +80,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         return viewModels.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: TileCollectionViewCell.identifier,

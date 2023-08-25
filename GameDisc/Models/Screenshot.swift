@@ -1,4 +1,4 @@
-struct Screenshot {
-    let id: Int
-    let imageId: String
+struct Screenshot: Decodable {
+    var id: Int
+    var imageId: String
 }

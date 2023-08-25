@@ -1,7 +1,7 @@
 struct Game: Decodable {
     let id: Int
     let name: String
-    let ratingCount: Int
-    let screenshots: [Int]
-    let genres: [Int]
+    let rating: Double?
+    let screenshots: [Screenshot]?
+    let genres: [Genre]?
 }

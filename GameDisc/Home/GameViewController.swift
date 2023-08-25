@@ -7,15 +7,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private let featureGameView = FeatureGameView()
     private let networkManager = NetworkManager.shared
     
-    private let featuredGame: Game = Game(
-        id: 1, name: "The Last of Us", ratingCount: 0, screenshots: [], genres: [1]
-    )
+    private let featuredGame: Game = Game(id: 0, name: "a", rating: 2, screenshots: [], genres: [])
     
-    private var viewModels: [CollectionTableViewCellViewModel] = [
-        CollectionTableViewCellViewModel(categoryTitle: "Test", games: [
-            Game(id: 0, name: "Hello", ratingCount: 9, screenshots: [], genres: [])
-        ])
-    ]
+    private var viewModels: [CollectionTableViewCellViewModel] = []
     
     private lazy var logoView: UIImageView = {
         let logoImage = UIImage(named: "Logo")
@@ -68,34 +62,24 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     private func addViewsToHierarchy() {
-        scrollView.addSubview(featureGameView)
-        scrollView.addSubview(tableView)
-        view.addSubview(scrollView)
+        view.addSubview(featureGameView)
+        view.addSubview(tableView)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            featureGameView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 8),
-            featureGameView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            featureGameView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 24),
-            featureGameView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -24),
+            featureGameView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            featureGameView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            featureGameView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            featureGameView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             featureGameView.heightAnchor.constraint(equalToConstant: 200)
         ])
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: featureGameView.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            tableView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            tableView.heightAnchor.constraint(equalToConstant: CGFloat(viewModels.count) * (view.frame.size.width/2)),
-            tableView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -113,7 +97,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 tableView.reloadData()
           }
         
-        case .failure(_):
+        case .failure(let error):
+            print(error)
           fatalError()
         }
       }
@@ -150,7 +135,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
 extension GameViewController: FeatureGameViewDelegate {
     func didTapCard() {
         let storyboard = UIStoryboard(name: "Detail", bundle: Bundle(for: DetailViewController.self))
-        let viewController = soryboard.instantiateViewController(withIdentifier: "Detail")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Detail")
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

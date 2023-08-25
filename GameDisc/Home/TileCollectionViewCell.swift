@@ -71,9 +71,12 @@ class TileCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - Configure
-    
+  
     func configure(with viewModel: Game) {
-        gameImage.image = UIImage(named: "placeholder1")
+        if let screenshot = viewModel.screenshots?.first {
+            gameImage.download(from: screenshot.imageId)
+            
+        }
         
         if let image = gameImage.image {
             let colorPalette = Vibrant.from(image).getPalette()
