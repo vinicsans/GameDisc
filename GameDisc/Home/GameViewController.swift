@@ -28,6 +28,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         table.isScrollEnabled = true
         table.allowsSelection = false
         table.separatorStyle = .none
+        table.register(FeatureGameView.self, forCellReuseIdentifier: "FeatureGameCell")
         return table
     }()
     
@@ -65,21 +66,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     private func addViewsToHierarchy() {
-        view.addSubview(featureGameView)
         view.addSubview(tableView)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            featureGameView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            featureGameView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            featureGameView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            featureGameView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            featureGameView.heightAnchor.constraint(equalToConstant: 200)
-        ])
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: featureGameView.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -108,23 +100,26 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: - Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModels.count
+        return viewModels.count + 1 // +1 for the featured game cell
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let viewModel = viewModels[indexPath.row]
-                
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
-            fatalError()
+        if indexPath.row == 0 {
+            // Dequeue the FeatureGameCell for the first row
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FeatureGameCell", for: indexPath) as! FeatureGameView
+            cell.delegate = self
+            cell.configure(with: featuredGame)
+            return cell
+        } else {
+            // Dequeue a CollectionTableViewCell for other rows
+            let viewModel = viewModels[indexPath.row - 1]
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
+                fatalError()
+            }
+            cell.configure(with: viewModel)
+            cell.delegate = self
+            return cell
         }
-        
-
-        cell.configure(with: viewModel)
-        cell.delegate = self
-        
-        print(viewModel)
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -152,14 +147,14 @@ extension GameViewController: CollectionTableViewCellDelegate {
 // Generate Lists
 extension GameViewController {
     func generateLists() {
-        var delayInterval = 2.0 // Inicializa o intervalo de atraso
+        var delayInterval = 3.0 // Inicializa o intervalo de atraso
         
         for genreId in genresList {
             DispatchQueue.main.asyncAfter(deadline: .now() + delayInterval) { [weak self] in
                 self?.fetchGamesForGenre(genreId)
             }
             
-            delayInterval += 2.0 // Incrementa o intervalo de atraso para a próxima requisição
+            delayInterval += 3.0 // Incrementa o intervalo de atraso para a próxima requisição
         }
     }
     
