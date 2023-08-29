@@ -125,6 +125,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return view.frame.size.width/2
     }
+    
+    
 }
 
 extension GameViewController: FeatureGameViewDelegate {
@@ -136,7 +138,8 @@ extension GameViewController: FeatureGameViewDelegate {
 }
 
 extension GameViewController: CollectionTableViewCellDelegate {
-    func didTapCell() {
+    func didTapCell(){
+        
         let storyboard = UIStoryboard(name: "Detail", bundle: Bundle(for: DetailViewController.self))
         let detailViewController = storyboard.instantiateViewController(withIdentifier: "Detail")
         
