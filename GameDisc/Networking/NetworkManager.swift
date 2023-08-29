@@ -77,7 +77,7 @@ class NetworkManager {
     public func fetchGamesByGenre(amount: Int, genreId: Int, completion: @escaping (Result<[Game], Error>) -> Void) {
         let requestBody = """
             \(fieldsInRequest);
-            where genres = (\(genreId)) & \(platformsInRequest);
+            where genres = (\(genreId)) & \(platformsInRequest) & screenshots != null;
             limit \(amount);
         """
         fetchData(fromEndpoint: "games", withBody: requestBody.data(using: .utf8), responseType: [Game].self, completion: completion)
@@ -97,6 +97,14 @@ class NetworkManager {
             limit \(amount);
         """
         fetchData(fromEndpoint: "games", withBody: requestBody.data(using: .utf8), responseType: [Game].self, completion: completion)
+    }
+    
+    public func fetchScreenshot(imageId: Int, completion: @escaping (Result<[Screenshot], Error>) -> Void) {
+        let requestBody = """
+            fields image_id;
+            where id = \(imageId);
+        """
+        fetchData(fromEndpoint: "screenshots", withBody: requestBody.data(using: .utf8), responseType: [Screenshot].self, completion: completion)
     }
  
     // Busca o nome de um gênero pelo seu ID

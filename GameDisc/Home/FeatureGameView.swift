@@ -5,7 +5,7 @@ protocol FeatureGameViewDelegate: AnyObject {
     func didTapCard()
 }
 
-class FeatureGameView: UIView {
+class FeatureGameView: UITableViewCell {
     
     weak var delegate: FeatureGameViewDelegate?
 
@@ -46,11 +46,10 @@ class FeatureGameView: UIView {
 
     // MARK: - Init
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openNewPage))
-        addGestureRecognizer(tapGesture)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -85,28 +84,28 @@ class FeatureGameView: UIView {
     private func setupConstraints() {
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
         ])
         
         NSLayoutConstraint.activate([
-            genreLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            genreLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            genreLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 48),
+            genreLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
             genreLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
             genreLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
         ])
         
         NSLayoutConstraint.activate([
             colorView.topAnchor.constraint(equalTo: topAnchor),
-            colorView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            colorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            colorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            colorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             colorView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
         NSLayoutConstraint.activate([
             backgroundImage.topAnchor.constraint(equalTo: topAnchor),
-            backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor),
+            backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }

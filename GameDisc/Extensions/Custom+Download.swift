@@ -1,20 +1,43 @@
 import UIKit
-import swift_vibrant
 
 extension UIImageView {
-    
-    func download(from imagePath: String) {
-        var url = URL(string: "https://images.igdb.com/igdb/image/upload/t_screenshot_med/")!
-        url.append(path: "\(imagePath).png")
+    private static let imageCache = NSCache<NSString, UIImage>()
 
-        URLSession.shared.dataTask(with: .init(url: url)) { data, _, error in
-            if error != nil { return }
+    func download(from imagePath: String, completion: @escaping (Result<UIImage?, Error>) -> Void) {
+        if let cachedImage = UIImageView.imageCache.object(forKey: imagePath as NSString) {
+            DispatchQueue.main.async {
+                self.image = cachedImage
+            }
+            completion(.success(cachedImage))
+            return
+        }
 
-            if let data {
+        guard let url = URL(string: "https://images.igdb.com/igdb/image/upload/t_screenshot_med/\(imagePath).png") else {
+            DispatchQueue.main.async {
+                completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            }
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
                 DispatchQueue.main.async {
-                    self.image = UIImage(data: data)
+                    completion(.failure(error))
                 }
-            } else { return }
+                return
+            }
+
+            if let data = data, let image = UIImage(data: data) {
+                UIImageView.imageCache.setObject(image, forKey: imagePath as NSString)
+                DispatchQueue.main.async {
+                    self.image = image
+                    completion(.success(image))
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completion(.success(nil))
+                }
+            }
         }.resume()
     }
 }
