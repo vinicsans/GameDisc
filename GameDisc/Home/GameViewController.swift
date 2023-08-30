@@ -49,12 +49,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         configureViews()
         addViewsToHierarchy()
         setupConstraints()
-    
-        for i in genresList {
-            loadGenresList(id: i)
-        }
      
-        loadLovedGames()
+        loadLists()
     }
     
     private func configureViews() {
@@ -78,40 +74,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-    }
-    
-    func loadGenresList(id: Int) {
-        networkManager.fetchGenreList(genreId: id) { result in
-            switch result {
-            case .success(let games):
-                print(games)
-                let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: "placeholder", games: games)
-                self.viewModels.append(collectionViewModel)
-                DispatchQueue.main.async { [self] in
-                    tableView.reloadData()
-                }
-            case .failure(let error):
-                print(error)
-                fatalError()
-            }
-        }
-    }
-    
-    func loadLovedGames() {
-        networkManager.fetchLovedGames() { result in
-            switch result {
-            case .success(let games):
-                print(games)
-                let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: "Os favoritos pela comunidade <3", games: games)
-                self.viewModels.append(collectionViewModel)
-                DispatchQueue.main.async { [self] in
-                    tableView.reloadData()
-                }
-            case .failure(let error):
-                print(error)
-                fatalError()
-            }
-        }
     }
     
     // MARK: - Table View
@@ -164,5 +126,65 @@ extension GameViewController: CollectionTableViewCellDelegate {
         print(indexPath)
         detailViewController.game = selectedGame
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
+
+// MARK: Load Lists
+
+extension GameViewController {
+    
+    private func loadLists() {
+        loadLovedGames()
+        loadGenreLists(genresList: genresList)
+    }
+    
+    private func loadGenreLists(genresList: [Int]) {
+        for genre in genresList {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                self.loadGenreName(genreId: genre) { genreName in
+                    self.networkManager.fetchGenreList(genreId: genre) { result in
+                        switch result {
+                        case .success(let games):
+                            let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: genreName, games: games)
+                            self.viewModels.append(collectionViewModel)
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func loadGenreName(genreId: Int, completion: @escaping (String) -> Void) {
+        networkManager.fetchGenreName(genreId: genreId) { result in
+            switch result {
+            case .success(let genreArray):
+                let genreName = genreArray[0].name
+                completion(genreName)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func loadLovedGames() {
+        networkManager.fetchLovedGames() { result in
+            switch result {
+            case .success(let games):
+                print(games)
+                let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: "Os favoritos pela comunidade <3", games: games)
+                self.viewModels.append(collectionViewModel)
+                DispatchQueue.main.async { [self] in
+                    tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+                fatalError()
+            }
+        }
     }
 }

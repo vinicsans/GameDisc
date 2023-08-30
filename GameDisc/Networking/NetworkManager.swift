@@ -78,6 +78,14 @@ class NetworkManager {
         fetchData(fromEndpoint: "games", withBody: requestBody.data(using: .utf8), responseType: [Game].self, completion: completion)
     }
     
+    public func fetchGenreName(genreId: Int, completion: @escaping (Result<[Genre], Error>) -> Void) {
+        let requestBody = """
+        fields id,name;
+        where id = (\(genreId));
+        """
+        fetchData(fromEndpoint: "genres", withBody: requestBody.data(using: .utf8), responseType: [Genre].self, completion: completion)
+    }
+    
     public func fetchGenreList(genreId: Int, completion: @escaping (Result<[Game], Error>) -> Void) {
         let requestBody = """
         fields id,name,rating,screenshots.image_id,genres.name,age_ratings.category,age_ratings.rating,involved_companies.company.name,summary,release_dates.y;
