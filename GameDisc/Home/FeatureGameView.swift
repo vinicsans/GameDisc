@@ -8,7 +8,7 @@ protocol FeatureGameViewDelegate: AnyObject {
 class FeatureGameView: UITableViewCell {
     
     weak var delegate: FeatureGameViewDelegate?
-
+    
     // MARK: - Components
     
     private lazy var backgroundImage: UIImageView = {

@@ -3,7 +3,7 @@ import swift_vibrant
 
 class TileCollectionViewCell: UICollectionViewCell {
     static let identifier = "TileCollectionViewCell"
-
+    
     private let gameImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -29,6 +29,7 @@ class TileCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .systemGray6
+        label.alpha = 0.0
         return label
     }()
     
@@ -43,7 +44,7 @@ class TileCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError()
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         colorView.frame = contentView.frame
@@ -71,34 +72,20 @@ class TileCollectionViewCell: UICollectionViewCell {
         colorView.backgroundColor = .clear
         colorView.alpha = 0.0 // Volta à transparência total ao ser reutilizado
     }
-
+    
     func configure(with viewModel: Game) {
         setupUI()
         fetchAndDisplayScreenshot(for: viewModel)
         setupLabel(with: viewModel.name)
     }
-
+    
     private func setupUI() {
         contentView.contentMode = .scaleAspectFill
         contentView.layer.cornerRadius = 14
     }
-
+    
     private func fetchAndDisplayScreenshot(for viewModel: Game) {
-        guard let imageId = viewModel.screenshots.first else { return }
-        
-        NetworkManager.shared.fetchScreenshot(imageId: imageId) { [weak self] result in
-            switch result {
-            case .success(let screenshots):
-                self?.handleScreenshotFetchResult(screenshots.first)
-            case .failure(let error):
-                print("Error fetching screenshot: \(error)")
-            }
-        }
-    }
-
-    private func handleScreenshotFetchResult(_ screenshot: Screenshot?) {
-        guard let imagePath = screenshot?.imageId else { return }
-        
+        let imagePath = viewModel.screenshots[0].imageId
         gameImage.download(from: imagePath) { [weak self] imageResult in
             switch imageResult {
             case .success(let image):
@@ -107,8 +94,9 @@ class TileCollectionViewCell: UICollectionViewCell {
                 print("Error downloading image: \(error)")
             }
         }
+        
     }
-
+    
     private func handleImageDownloadResult(_ image: UIImage?) {
         guard let image = image else { return }
         
@@ -120,11 +108,14 @@ class TileCollectionViewCell: UICollectionViewCell {
                 
                 self?.gameImage.image = image
                 self?.gameImage.alpha = 1.0 // Faz a gameImage totalmente visível
+                
+                self?.label.alpha = 1.0
             }
         }
     }
-
+    
     private func setupLabel(with text: String) {
         label.text = text
     }
+    
 }

@@ -1,3 +1,5 @@
 struct IGDBGames: Decodable {
-    let games: [Game]
+    let name: String
+    let result: [Game]
 }
+	

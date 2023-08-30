@@ -7,9 +7,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private let featureGameView = FeatureGameView()
     private let networkManager = NetworkManager.shared
     
-    private let genresList = [12, 8, 14, 15, 9]
-    
-    private let featuredGame: Game = Game(id: 1009, name: "The Last of Us", ratingCount: 91, screenshots: [236], genres: [0])
+    private let genresList = [12]
     
     private var viewModels: [CollectionTableViewCellViewModel] = []
     
@@ -51,15 +49,19 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         configureViews()
         addViewsToHierarchy()
         setupConstraints()
+    
+        for i in genresList {
+            loadGenresList(id: i)
+        }
+     
         loadLovedGames()
-        generateLists()
     }
     
     private func configureViews() {
         view.backgroundColor = .systemBackground
         navigationItem.titleView = logoView
         featureGameView.translatesAutoresizingMaskIntoConstraints = false
-        featureGameView.configure(with: featuredGame)
+        
         tableView.dataSource = self
         tableView.delegate = self
         featureGameView.delegate = self
@@ -71,30 +73,45 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
-    func loadLovedGames() {
-      networkManager.fetchGamesLoved(amount: 12) { result in
-        switch result {
-        
-        case .success(let games):
-          let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: "Os favoritos da comunidade <3", games: games)
-          self.viewModels.append(collectionViewModel)
-        
-            DispatchQueue.main.async { [self] in
-                tableView.reloadData()
-          }
-        
-        case .failure(let error):
-            print(error)
-          fatalError()
+    func loadGenresList(id: Int) {
+        networkManager.fetchGenreList(genreId: id) { result in
+            switch result {
+            case .success(let games):
+                print(games)
+                let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: "placeholder", games: games)
+                self.viewModels.append(collectionViewModel)
+                DispatchQueue.main.async { [self] in
+                    tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+                fatalError()
+            }
         }
-      }
+    }
+    
+    func loadLovedGames() {
+        networkManager.fetchLovedGames() { result in
+            switch result {
+            case .success(let games):
+                print(games)
+                let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: "Os favoritos pela comunidade <3", games: games)
+                self.viewModels.append(collectionViewModel)
+                DispatchQueue.main.async { [self] in
+                    tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+                fatalError()
+            }
+        }
     }
     
     // MARK: - Table View
@@ -102,16 +119,14 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModels.count + 1 // +1 for the featured game cell
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            // Dequeue the FeatureGameCell for the first row
             let cell = tableView.dequeueReusableCell(withIdentifier: "FeatureGameCell", for: indexPath) as! FeatureGameView
             cell.delegate = self
-            cell.configure(with: featuredGame)
+            //.configure(with: featuredGame)
             return cell
         } else {
-            // Dequeue a CollectionTableViewCell for other rows
             let viewModel = viewModels[indexPath.row - 1]
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
                 fatalError()
@@ -138,70 +153,16 @@ extension GameViewController: FeatureGameViewDelegate {
 }
 
 extension GameViewController: CollectionTableViewCellDelegate {
-    func didTapCell(){
-        
+    func didTapCell(at indexPath: IndexPath){
+        let selectedGame = viewModels[indexPath.row].games[indexPath.item]
+        print(indexPath.section)
         let storyboard = UIStoryboard(name: "Detail", bundle: Bundle(for: DetailViewController.self))
-        let detailViewController = storyboard.instantiateViewController(withIdentifier: "Detail")
-        
+        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "Detail") as? DetailViewController else {
+            return
+        }
+        print(viewModels.count)
+        print(indexPath)
+        detailViewController.game = selectedGame
         navigationController?.pushViewController(detailViewController, animated: true)
     }
-}
-
-// Generate Lists
-extension GameViewController {
-    func generateLists() {
-        var delayInterval = 3.0 // Inicializa o intervalo de atraso
-        
-        for genreId in genresList {
-            DispatchQueue.main.asyncAfter(deadline: .now() + delayInterval) { [weak self] in
-                self?.fetchGamesForGenre(genreId)
-            }
-            
-            delayInterval += 3.0 // Incrementa o intervalo de atraso para a próxima requisição
-        }
-    }
-    
-    private func fetchGamesForGenre(_ genreId: Int) {
-        networkManager.fetchGamesByGenre(amount: 10, genreId: genreId) { [weak self] result in
-            switch result {
-            case .success(let games):
-                self?.fetchGenreName(genreId: genreId) { genreNameResult in
-                    switch genreNameResult {
-                    case .success(let genreName):
-                        let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: genreName, games: games)
-                        
-                        DispatchQueue.main.async { [weak self] in
-                            self?.viewModels.append(collectionViewModel)
-                            self?.tableView.reloadData()
-                        }
-                        
-                    case .failure(let error):
-                        print(error)
-                        fatalError()
-                    }
-                }
-                
-            case .failure(let error):
-                print(error)
-                fatalError()
-            }
-        }
-    }
-
-    private func fetchGenreName(genreId: Int, completion: @escaping (Result<String, Error>) -> Void) {
-        networkManager.fetchGenresName(genreId: genreId) { result in
-            switch result {
-            case .success(let genres):
-                if let genre = genres.first {
-                    completion(.success(genre.name))
-                } else {
-                    completion(.failure(NSError(domain: "AppErrorDomain", code: 0, userInfo: [NSLocalizedDescriptionKey: "Genre not found"])))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-
-
 }

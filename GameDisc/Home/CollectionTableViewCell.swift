@@ -6,7 +6,7 @@ struct CollectionTableViewCellViewModel {
 }
 
 protocol CollectionTableViewCellDelegate: AnyObject {
-    func didTapCell()
+    func didTapCell(at indexPath: IndexPath)
 }
 
 class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -23,6 +23,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.alpha = 0.0
         return label
     }()
     
@@ -96,8 +97,12 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     func configure(with viewModel: CollectionTableViewCellViewModel) {
         self.viewModels = viewModel.games
-        titleLabel.text = viewModel.categoryTitle
+        self.titleLabel.text = viewModel.categoryTitle
         
+        UIView.animate(withDuration: 0.3) {
+            self.titleLabel.alpha = 1.0
+        }
+                
         self.collectionView.reloadData()
     }
     
@@ -111,6 +116,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didTapCell()
+        let adjustedIndexPath = IndexPath(item: indexPath.item, section: 0)
+        delegate?.didTapCell(at: adjustedIndexPath)
     }
 }
