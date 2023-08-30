@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		485DA9611A700158E1F91554 /* Pods_GameDisc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5EB611D6AA06EC844D211F3 /* Pods_GameDisc.framework */; };
 		CE1CDF9C2A993A62000C03FD /* Custom+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CDF9B2A993A62000C03FD /* Custom+Download.swift */; };
+		CE6B68152A9EB3240069FA1B /* InvolvedCompanies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B68142A9EB3240069FA1B /* InvolvedCompanies.swift */; };
+		CE6B68172A9EB3920069FA1B /* ReleaseDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B68162A9EB3920069FA1B /* ReleaseDate.swift */; };
+		CE6B68192A9EC2BD0069FA1B /* AgeRatings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B68182A9EC2BD0069FA1B /* AgeRatings.swift */; };
 		CE6CE6292A8712F40015CD5D /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE6242A8712F40015CD5D /* CollectionTableViewCell.swift */; };
 		CE6CE62A2A8712F40015CD5D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE6252A8712F40015CD5D /* Game.swift */; };
 		CE6CE62B2A8712F40015CD5D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE6262A8712F40015CD5D /* GameViewController.swift */; };
@@ -29,6 +32,9 @@
 /* Begin PBXFileReference section */
 		6AB71D85396E33C45420D787 /* Pods-GameDisc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameDisc.debug.xcconfig"; path = "Target Support Files/Pods-GameDisc/Pods-GameDisc.debug.xcconfig"; sourceTree = "<group>"; };
 		CE1CDF9B2A993A62000C03FD /* Custom+Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom+Download.swift"; sourceTree = "<group>"; };
+		CE6B68142A9EB3240069FA1B /* InvolvedCompanies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvolvedCompanies.swift; sourceTree = "<group>"; };
+		CE6B68162A9EB3920069FA1B /* ReleaseDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDate.swift; sourceTree = "<group>"; };
+		CE6B68182A9EC2BD0069FA1B /* AgeRatings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeRatings.swift; sourceTree = "<group>"; };
 		CE6CE6242A8712F40015CD5D /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		CE6CE6252A8712F40015CD5D /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		CE6CE6262A8712F40015CD5D /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +125,9 @@
 			isa = PBXGroup;
 			children = (
 				CE6CE6252A8712F40015CD5D /* Game.swift */,
+				CE6B68182A9EC2BD0069FA1B /* AgeRatings.swift */,
+				CE6B68142A9EB3240069FA1B /* InvolvedCompanies.swift */,
+				CE6B68162A9EB3920069FA1B /* ReleaseDate.swift */,
 				CE6CE6372A8A9A0F0015CD5D /* Genre.swift */,
 				CE6CE6392A8A9A350015CD5D /* Screenshot.swift */,
 				CE6CE63B2A8A9FBE0015CD5D /* IGDBResponses.swift */,
@@ -276,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6B68192A9EC2BD0069FA1B /* AgeRatings.swift in Sources */,
 				CE6CE6352A8A98CB0015CD5D /* NetworkManager.swift in Sources */,
 				CE6CE6322A87131C0015CD5D /* DetailViewController.swift in Sources */,
 				CE6CE63C2A8A9FBE0015CD5D /* IGDBResponses.swift in Sources */,
@@ -284,8 +294,10 @@
 				CEF461C12A870FCB005814F9 /* AppDelegate.swift in Sources */,
 				CE6CE62D2A8712F40015CD5D /* TileCollectionViewCell.swift in Sources */,
 				CEF461C32A870FCB005814F9 /* SceneDelegate.swift in Sources */,
+				CE6B68152A9EB3240069FA1B /* InvolvedCompanies.swift in Sources */,
 				CE6CE62B2A8712F40015CD5D /* GameViewController.swift in Sources */,
 				CE6CE63A2A8A9A350015CD5D /* Screenshot.swift in Sources */,
+				CE6B68172A9EB3920069FA1B /* ReleaseDate.swift in Sources */,
 				CE6CE6292A8712F40015CD5D /* CollectionTableViewCell.swift in Sources */,
 				CE1CDF9C2A993A62000C03FD /* Custom+Download.swift in Sources */,
 				CE6CE6382A8A9A0F0015CD5D /* Genre.swift in Sources */,
@@ -434,6 +446,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -461,6 +474,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
