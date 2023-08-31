@@ -23,10 +23,10 @@ class DetailViewController: UIViewController {
         
         backgroundDescription.layer.cornerRadius = 14
         gameImage.layer.cornerRadius = 14
-        configure(with: game)
+        configure()
     }
     
-    func configure(with game: Game) {
+    private func configure() {
         gameTitle.text = game.name
         gameDescription.text = game.summary
         gameGenre.text = game.genres[0].name

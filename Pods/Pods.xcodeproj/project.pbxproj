@@ -43,9 +43,9 @@
 		16D3416902A6347031A7B8889857155F /* Pods-GameDisc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GameDisc.debug.xcconfig"; sourceTree = "<group>"; };
 		174DE2A238A4D39382CD33313BBEB488 /* Builder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Builder.swift; path = swiftVibrant/Builder.swift; sourceTree = "<group>"; };
 		245B07E864E8F5194D212442912B1FBC /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = swiftVibrant/Filter.swift; sourceTree = "<group>"; };
-		24D72D60AB8E1BB395151F6BD8396285 /* Pods-GameDisc */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-GameDisc"; path = Pods_GameDisc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24D72D60AB8E1BB395151F6BD8396285 /* Pods_GameDisc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameDisc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25F5D695FF280DD651E93509D2CE9653 /* Pods-GameDisc-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GameDisc-acknowledgements.plist"; sourceTree = "<group>"; };
-		34BE0081C50E4EAFA9F4CA961742747D /* swift-vibrant */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "swift-vibrant"; path = swift_vibrant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34BE0081C50E4EAFA9F4CA961742747D /* swift_vibrant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = swift_vibrant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D2B504579292CF7E71A69B199A173DE /* Pods-GameDisc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GameDisc-dummy.m"; sourceTree = "<group>"; };
 		4E67862FEBEBD4A905F147FAD6835884 /* Vbox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Vbox.swift; path = swiftVibrant/Vbox.swift; sourceTree = "<group>"; };
 		52093D21795626E24B0D2F1D21C38C03 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = swiftVibrant/Image.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		90F420427A606E052238FE81C52C6B83 /* Pods-GameDisc.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GameDisc.modulemap"; sourceTree = "<group>"; };
 		92D77016DFD0EC8FCC79312F612F2FAF /* Pods-GameDisc-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GameDisc-Info.plist"; sourceTree = "<group>"; };
 		9D1584E612FAD89882E25B98B5BFF1E9 /* Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Generator.swift; path = swiftVibrant/Generator.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A2DB1FCEE7118AA27D35A8D131F570F0 /* VibrantColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VibrantColors.swift; path = swiftVibrant/VibrantColors.swift; sourceTree = "<group>"; };
 		ABA9621E8BBB87A2AA35DA1051A643C8 /* Vibrant.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Vibrant.swift; path = swiftVibrant/Vibrant.swift; sourceTree = "<group>"; };
 		D1FB8E494DD31674A489F240578D970D /* Util.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Util.swift; path = swiftVibrant/Util.swift; sourceTree = "<group>"; };
@@ -110,8 +110,8 @@
 		255564ECDB39D6F536FF66FDF2C44060 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				24D72D60AB8E1BB395151F6BD8396285 /* Pods-GameDisc */,
-				34BE0081C50E4EAFA9F4CA961742747D /* swift-vibrant */,
+				24D72D60AB8E1BB395151F6BD8396285 /* Pods_GameDisc.framework */,
+				34BE0081C50E4EAFA9F4CA961742747D /* swift_vibrant.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,7 +166,6 @@
 				A2DB1FCEE7118AA27D35A8D131F570F0 /* VibrantColors.swift */,
 				1C78F2E2EC5DE1BED077AE5A6F81662A /* Support Files */,
 			);
-			name = "swift-vibrant";
 			path = "swift-vibrant";
 			sourceTree = "<group>";
 		};
@@ -234,7 +233,7 @@
 			);
 			name = "swift-vibrant";
 			productName = swift_vibrant;
-			productReference = 34BE0081C50E4EAFA9F4CA961742747D /* swift-vibrant */;
+			productReference = 34BE0081C50E4EAFA9F4CA961742747D /* swift_vibrant.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		3B15B88AFC4E47B3F8EA4D1E2235DA28 /* Pods-GameDisc */ = {
@@ -253,7 +252,7 @@
 			);
 			name = "Pods-GameDisc";
 			productName = Pods_GameDisc;
-			productReference = 24D72D60AB8E1BB395151F6BD8396285 /* Pods-GameDisc */;
+			productReference = 24D72D60AB8E1BB395151F6BD8396285 /* Pods_GameDisc.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -357,7 +356,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/swift-vibrant/swift-vibrant-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/swift-vibrant/swift-vibrant-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -392,7 +391,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/swift-vibrant/swift-vibrant-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/swift-vibrant/swift-vibrant-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

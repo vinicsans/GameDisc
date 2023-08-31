@@ -6,7 +6,7 @@ struct CollectionTableViewCellViewModel {
 }
 
 protocol CollectionTableViewCellDelegate: AnyObject {
-    func didTapCell(at indexPath: IndexPath)
+    func didTapGame(game: Game)
 }
 
 class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -116,7 +116,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let adjustedIndexPath = IndexPath(item: indexPath.item, section: 0)
-        delegate?.didTapCell(at: adjustedIndexPath)
+        let game = viewModels[indexPath.row]
+        delegate?.didTapGame(game: game)
     }
 }

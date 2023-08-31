@@ -1,16 +1,17 @@
 import UIKit
 import swift_vibrant
 
+enum Row {
+    case banner(Game)
+    case carousel(String, [Game])
+}
+
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - Propriedades
-    
-    private let featureGameView = FeatureGameView()
+
     private let networkManager = NetworkManager.shared
-    
-    private let genresList = [12, 8, 14, 15, 9]
-    
-    private var featuredGame: Game? = nil
     private var viewModels: [CollectionTableViewCellViewModel] = []
+    private var rows: [Row] = []
     
     private lazy var logoView: UIImageView = {
         let logoImage = UIImage(named: "Logo")
@@ -20,14 +21,20 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return imageView
     }()
     
+    private let loadingView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
+        table.register(FeatureGameViewCell.self, forCellReuseIdentifier: FeatureGameViewCell.identifier)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.isScrollEnabled = true
         table.allowsSelection = false
         table.separatorStyle = .none
-        table.register(FeatureGameView.self, forCellReuseIdentifier: "FeatureGameCell")
         return table
     }()
     
@@ -57,15 +64,14 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private func configureViews() {
         view.backgroundColor = .systemBackground
         navigationItem.titleView = logoView
-        featureGameView.translatesAutoresizingMaskIntoConstraints = false
         
         tableView.dataSource = self
         tableView.delegate = self
-        featureGameView.delegate = self
     }
     
     private func addViewsToHierarchy() {
         view.addSubview(tableView)
+        view.addSubview(loadingView)
     }
     
     private func setupConstraints() {
@@ -75,25 +81,35 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
+        NSLayoutConstraint.activate([
+            loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
     
     // MARK: - Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModels.count + 1 // +1 for the featured game cell
+        return rows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FeatureGameCell", for: indexPath) as! FeatureGameView
+        let row = rows[indexPath.row]
+        
+        switch row {
+        case let .banner(game):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FeatureGameViewCell.identifier, for: indexPath) as? FeatureGameViewCell else {
+                fatalError()
+            }
             cell.delegate = self
-            // self.featuredGame.configure(with: featuredGame)
+            cell.setGame(game)
             return cell
-        } else {
-            let viewModel = viewModels[indexPath.row - 1]
+        case let .carousel(title, games):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
                 fatalError()
             }
+            let viewModel = CollectionTableViewCellViewModel(categoryTitle: title, games: games)
             cell.configure(with: viewModel)
             cell.delegate = self
             return cell
@@ -103,30 +119,14 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return view.frame.size.width/2
     }
-    
-    
 }
 
-extension GameViewController: FeatureGameViewDelegate {
-    func didTapCard() {
+extension GameViewController: FeatureGameViewCellDelegate, CollectionTableViewCellDelegate {
+    func didTapGame(game: Game) {
         let storyboard = UIStoryboard(name: "Detail", bundle: Bundle(for: DetailViewController.self))
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Detail")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! DetailViewController
+        viewController.game = game
         navigationController?.pushViewController(viewController, animated: true)
-    }
-}
-
-extension GameViewController: CollectionTableViewCellDelegate {
-    func didTapCell(at indexPath: IndexPath){
-        let selectedGame = viewModels[indexPath.row].games[indexPath.item]
-        print(indexPath.section)
-        let storyboard = UIStoryboard(name: "Detail", bundle: Bundle(for: DetailViewController.self))
-        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "Detail") as? DetailViewController else {
-            return
-        }
-        print(viewModels.count)
-        print(indexPath)
-        detailViewController.game = selectedGame
-        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 
@@ -135,37 +135,24 @@ extension GameViewController: CollectionTableViewCellDelegate {
 extension GameViewController {
     
     private func loadLists() {
-        loadLovedGames()
-        loadGenreLists(genresList: genresList)
-    }
-    
-    func loadFeaturedGame() {
-        networkManager.fetchFeaturedGames(gameId: 1002) { result in
-            switch result {
-            case .success(let games):
-                let game = games[0]
-                self.featuredGame = game
-                DispatchQueue.main.async { [self] in
-                    tableView.reloadData()
-                }
-            case .failure(let error):
-                print(error)
-                fatalError()
-            }
+        let genresList = [12, 8, 14, 15, 9]
+        loadingView.startAnimating()
+        loadLovedGames { [weak self] in
+            self?.loadGenreLists(genresList: genresList)
         }
     }
-    
+        
     private func loadGenreLists(genresList: [Int]) {
         for genre in genresList {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.loadGenreName(genreId: genre) { genreName in
-                    self.networkManager.fetchGenreList(genreId: genre) { result in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+                self?.loadGenreName(genreId: genre) { genreName in
+                    self?.networkManager.fetchGenreList(genreId: genre) { result in
                         switch result {
                         case .success(let games):
-                            let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: genreName, games: games)
-                            self.viewModels.append(collectionViewModel)
+                            self?.rows.append(.carousel(genreName, games))
                             DispatchQueue.main.async {
-                                self.tableView.reloadData()
+                                self?.loadingView.stopAnimating()
+                                self?.tableView.reloadData()
                             }
                         case .failure(let error):
                             print(error)
@@ -188,20 +175,17 @@ extension GameViewController {
         }
     }
     
-    func loadLovedGames() {
+    func loadLovedGames(completion: @escaping () -> Void) {
         networkManager.fetchLovedGames() { result in
             switch result {
             case .success(let games):
-                print(games)
-                let collectionViewModel = CollectionTableViewCellViewModel(categoryTitle: "Os favoritos pela comunidade <3", games: games)
-                self.viewModels.append(collectionViewModel)
-                DispatchQueue.main.async { [self] in
-                    tableView.reloadData()
-                }
+                self.rows.append(.banner(games[0]))
+                self.rows.append(.carousel("Os favoritos pela comunidade <3", games))
             case .failure(let error):
                 print(error)
                 fatalError()
             }
+            completion()
         }
     }
 }

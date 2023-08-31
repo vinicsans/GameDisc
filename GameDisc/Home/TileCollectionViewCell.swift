@@ -66,6 +66,7 @@ class TileCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         gameImage.image = nil
         gameImage.alpha = 0.0 // Volta à transparência total ao ser reutilizado
         label.text = nil
