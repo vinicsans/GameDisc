@@ -67,6 +67,13 @@ class NetworkManager {
     
     // MARK: Métodos Publicos
     
+    public func fetchFeaturedGames(gameId: Int, completion: @escaping (Result<[Game], Error>) -> Void) {
+        let requestBody = """
+        fields id,name,rating,screenshots.image_id,genres.name,age_ratings.category,age_ratings.rating,involved_companies.company.name,summary,release_dates.y;
+        where screenshots != null & rating != null & genres != null & age_ratings != null & involved_companies != null & summary != null & release_dates != null & platforms = (6, 48, 49) & where id = (\(gameId));
+        """
+        fetchData(fromEndpoint: "games", withBody: requestBody.data(using: .utf8), responseType: [Game].self, completion: completion)
+    }
  
     public func fetchLovedGames(completion: @escaping (Result<[Game], Error>) -> Void) {
         let requestBody = """

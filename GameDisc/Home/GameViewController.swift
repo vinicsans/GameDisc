@@ -7,8 +7,9 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private let featureGameView = FeatureGameView()
     private let networkManager = NetworkManager.shared
     
-    private let genresList = [12]
+    private let genresList = [12, 8, 14, 15, 9]
     
+    private var featuredGame: Game? = nil
     private var viewModels: [CollectionTableViewCellViewModel] = []
     
     private lazy var logoView: UIImageView = {
@@ -86,7 +87,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FeatureGameCell", for: indexPath) as! FeatureGameView
             cell.delegate = self
-            //.configure(with: featuredGame)
+            // self.featuredGame.configure(with: featuredGame)
             return cell
         } else {
             let viewModel = viewModels[indexPath.row - 1]
@@ -138,9 +139,25 @@ extension GameViewController {
         loadGenreLists(genresList: genresList)
     }
     
+    func loadFeaturedGame() {
+        networkManager.fetchFeaturedGames(gameId: 1002) { result in
+            switch result {
+            case .success(let games):
+                let game = games[0]
+                self.featuredGame = game
+                DispatchQueue.main.async { [self] in
+                    tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+                fatalError()
+            }
+        }
+    }
+    
     private func loadGenreLists(genresList: [Int]) {
         for genre in genresList {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.loadGenreName(genreId: genre) { genreName in
                     self.networkManager.fetchGenreList(genreId: genre) { result in
                         switch result {
