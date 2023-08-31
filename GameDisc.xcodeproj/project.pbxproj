@@ -15,7 +15,7 @@
 		CE6CE6292A8712F40015CD5D /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE6242A8712F40015CD5D /* CollectionTableViewCell.swift */; };
 		CE6CE62A2A8712F40015CD5D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE6252A8712F40015CD5D /* Game.swift */; };
 		CE6CE62B2A8712F40015CD5D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE6262A8712F40015CD5D /* GameViewController.swift */; };
-		CE6CE62C2A8712F40015CD5D /* FeatureGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE6272A8712F40015CD5D /* FeatureGameView.swift */; };
+		CE6CE62C2A8712F40015CD5D /* FeatureGameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE6272A8712F40015CD5D /* FeatureGameViewCell.swift */; };
 		CE6CE62D2A8712F40015CD5D /* TileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE6282A8712F40015CD5D /* TileCollectionViewCell.swift */; };
 		CE6CE6312A87131C0015CD5D /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6CE62F2A87131C0015CD5D /* Detail.storyboard */; };
 		CE6CE6322A87131C0015CD5D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE6302A87131C0015CD5D /* DetailViewController.swift */; };
@@ -38,7 +38,7 @@
 		CE6CE6242A8712F40015CD5D /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		CE6CE6252A8712F40015CD5D /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		CE6CE6262A8712F40015CD5D /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		CE6CE6272A8712F40015CD5D /* FeatureGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureGameView.swift; sourceTree = "<group>"; };
+		CE6CE6272A8712F40015CD5D /* FeatureGameViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureGameViewCell.swift; sourceTree = "<group>"; };
 		CE6CE6282A8712F40015CD5D /* TileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE6CE62F2A87131C0015CD5D /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		CE6CE6302A87131C0015CD5D /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6CE6262A8712F40015CD5D /* GameViewController.swift */,
-				CE6CE6272A8712F40015CD5D /* FeatureGameView.swift */,
+				CE6CE6272A8712F40015CD5D /* FeatureGameViewCell.swift */,
 				CE6CE6242A8712F40015CD5D /* CollectionTableViewCell.swift */,
 				CE6CE6282A8712F40015CD5D /* TileCollectionViewCell.swift */,
 			);
@@ -289,7 +289,7 @@
 				CE6CE6352A8A98CB0015CD5D /* NetworkManager.swift in Sources */,
 				CE6CE6322A87131C0015CD5D /* DetailViewController.swift in Sources */,
 				CE6CE63C2A8A9FBE0015CD5D /* IGDBResponses.swift in Sources */,
-				CE6CE62C2A8712F40015CD5D /* FeatureGameView.swift in Sources */,
+				CE6CE62C2A8712F40015CD5D /* FeatureGameViewCell.swift in Sources */,
 				CE6CE62A2A8712F40015CD5D /* Game.swift in Sources */,
 				CEF461C12A870FCB005814F9 /* AppDelegate.swift in Sources */,
 				CE6CE62D2A8712F40015CD5D /* TileCollectionViewCell.swift in Sources */,
